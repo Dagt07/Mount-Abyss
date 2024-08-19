@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://d2x2im8frfjfw"]
+[gd_scene load_steps=7 format=3 uid="uid://d2x2im8frfjfw"]
 
 [ext_resource type="Theme" uid="uid://bb5n0oh2xtqpm" path="res://resources/theme.tres" id="1_r7w6d"]
 [ext_resource type="FontFile" uid="uid://cflvow3t5s7tk" path="res://assets/fonts/AVA_Font_1_14/AVA.otf" id="2_c632p"]
+[ext_resource type="Script" path="res://ui/main_menu.gd" id="2_pdynf"]
+[ext_resource type="PackedScene" uid="uid://b3esvp4m7hfi7" path="res://scenes/main.tscn" id="3_3688t"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_hmun5"]
 font_size = 36
@@ -9,7 +11,7 @@ font_size = 36
 [sub_resource type="LabelSettings" id="LabelSettings_l8h4k"]
 font = ExtResource("2_c632p")
 
-[node name="Main menu" type="Control"]
+[node name="MainMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -17,6 +19,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_r7w6d")
+script = ExtResource("2_pdynf")
+main = ExtResource("3_3688t")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
@@ -56,17 +60,21 @@ label_settings = SubResource("LabelSettings_l8h4k")
 horizontal_alignment = 1
 
 [node name="StartButton" type="Button" parent="VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Start"
 
 [node name="WorldLevelsButton" type="Button" parent="VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Worlds"
 
 [node name="CreditsButton" type="Button" parent="VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Credits"
 
 [node name="QuitButton" type="Button" parent="VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Quit"
