@@ -1,10 +1,12 @@
-[gd_scene load_steps=14 format=3 uid="uid://ywxbv0oq3d73"]
+[gd_scene load_steps=17 format=3 uid="uid://ywxbv0oq3d73"]
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_q45e5"]
 [ext_resource type="Texture2D" uid="uid://8l5yjn1ao4ay" path="res://assets/sonicsheetsonic.png" id="2_m1kwp"]
+[ext_resource type="Script" path="res://components/hitbox.gd" id="3_3ovxl"]
+[ext_resource type="Script" path="res://components/hurtbox.gd" id="4_jncjv"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_udiwa"]
-height = 42.0
+height = 40.0
 
 [sub_resource type="Animation" id="Animation_o6ag5"]
 length = 0.001
@@ -75,6 +77,9 @@ _data = {
 "walk": SubResource("Animation_nfygx")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kty4a"]
+size = Vector2(30, 6)
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vyngu"]
 animation = &"idle"
 
@@ -99,11 +104,11 @@ transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition
 [node name="Player" type="Node2D"]
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+collision_layer = 3
+collision_mask = 3
 script = ExtResource("1_q45e5")
-metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-position = Vector2(0, 10)
 scale = Vector2(2, 2)
 shape = SubResource("CapsuleShape2D_udiwa")
 
@@ -121,6 +126,25 @@ hframes = 7
 vframes = 7
 frame = 5
 
+[node name="Hitbox" type="Area2D" parent="CharacterBody2D/Pivot"]
+position = Vector2(-2, 44)
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("3_3ovxl")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Pivot/Hitbox"]
+shape = SubResource("RectangleShape2D_kty4a")
+
 [node name="AnimationTree" type="AnimationTree" parent="CharacterBody2D"]
 tree_root = SubResource("AnimationNodeStateMachine_ku4t6")
 anim_player = NodePath("../AnimationPlayer")
+
+[node name="Hurtbox" type="Area2D" parent="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("4_jncjv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Hurtbox"]
+scale = Vector2(2, 2)
+shape = SubResource("CapsuleShape2D_udiwa")

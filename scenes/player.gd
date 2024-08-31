@@ -10,11 +10,13 @@ extends CharacterBody2D
 
 @onready var sprite_2d: Sprite2D = $Pivot/Sonicsheetsonic
 @onready var pivot: Node2D = $Pivot
+@onready var hitbox: Hitbox = $Pivot/Hitbox
 @onready var animation_tree: AnimationTree = $AnimationTree
 @onready var playback = animation_tree.get("parameters/playback")
 
+
 func _ready() -> void:
-	pass
+	hitbox.damage_dealt.connect(_on_damage_dealt)
 
 # func _process(delta: float) -> void:
 	# occurs in every frame of the game, associated with the monitor refresh rate
@@ -50,3 +52,14 @@ func _physics_process(delta: float) -> void:
 		#	playback.travel("fall")
 	
 	move_and_slide()
+
+func taunt():
+	Debug.log("· o ·)/")
+
+
+func take_damage(damage: int):
+	Debug.log("oh no")
+
+
+func _on_damage_dealt() -> void:
+	Debug.log("We made damage")
