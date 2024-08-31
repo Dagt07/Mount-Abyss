@@ -1,10 +1,100 @@
-[gd_scene load_steps=4 format=3 uid="uid://ywxbv0oq3d73"]
+[gd_scene load_steps=14 format=3 uid="uid://ywxbv0oq3d73"]
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_q45e5"]
 [ext_resource type="Texture2D" uid="uid://8l5yjn1ao4ay" path="res://assets/sonicsheetsonic.png" id="2_m1kwp"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_udiwa"]
-height = 44.0
+height = 42.0
+
+[sub_resource type="Animation" id="Animation_o6ag5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/path = NodePath("Pivot/Sonicsheetsonic:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/path = NodePath("Pivot/Sonicsheetsonic:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
+
+[sub_resource type="Animation" id="Animation_i1ers"]
+resource_name = "idle"
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot/Sonicsheetsonic:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, 0), Vector2i(3, 0), Vector2i(4, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_nfygx"]
+resource_name = "walk"
+length = 0.7
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot/Sonicsheetsonic:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [6, 11, 12, 13, 14, 15, 16]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_67db0"]
+_data = {
+"RESET": SubResource("Animation_o6ag5"),
+"idle": SubResource("Animation_i1ers"),
+"walk": SubResource("Animation_nfygx")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vyngu"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jh8fa"]
+animation = &"walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_46pb6"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_n7ayh"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ey84n"]
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_ku4t6"]
+states/End/position = Vector2(734, 100)
+states/idle/node = SubResource("AnimationNodeAnimation_vyngu")
+states/idle/position = Vector2(357, 100)
+states/walk/node = SubResource("AnimationNodeAnimation_jh8fa")
+states/walk/position = Vector2(493, 100)
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_46pb6"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_n7ayh"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_ey84n")]
 
 [node name="Player" type="Node2D"]
 
@@ -12,13 +102,25 @@ height = 44.0
 script = ExtResource("1_q45e5")
 metadata/_edit_group_ = true
 
-[node name="Sonicsheetsonic" type="Sprite2D" parent="CharacterBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(0, 10)
+scale = Vector2(2, 2)
+shape = SubResource("CapsuleShape2D_udiwa")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CharacterBody2D"]
+libraries = {
+"": SubResource("AnimationLibrary_67db0")
+}
+
+[node name="Pivot" type="Node2D" parent="CharacterBody2D"]
+
+[node name="Sonicsheetsonic" type="Sprite2D" parent="CharacterBody2D/Pivot"]
 scale = Vector2(2, 2)
 texture = ExtResource("2_m1kwp")
 hframes = 7
 vframes = 7
+frame = 5
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-position = Vector2(0, 7)
-scale = Vector2(2, 2)
-shape = SubResource("CapsuleShape2D_udiwa")
+[node name="AnimationTree" type="AnimationTree" parent="CharacterBody2D"]
+tree_root = SubResource("AnimationNodeStateMachine_ku4t6")
+anim_player = NodePath("../AnimationPlayer")

@@ -2,31 +2,51 @@ class_name Player
 extends CharacterBody2D
 
 
-const SPEED = 350.0
-const JUMP_VELOCITY = -600.0
+@export var speed = 400.0
+@export var jump_speed = 500.0
+@export var gravity = 800
+@export var acceleration = 2000
 
+
+@onready var sprite_2d: Sprite2D = $Pivot/Sonicsheetsonic
+@onready var pivot: Node2D = $Pivot
+@onready var animation_tree: AnimationTree = $AnimationTree
+@onready var playback = animation_tree.get("parameters/playback")
+
+func _ready() -> void:
+	pass
+
+# func _process(delta: float) -> void:
+	# occurs in every frame of the game, associated with the monitor refresh rate
+	# pass
 
 func _physics_process(delta: float) -> void:
-	# Add the gravity.
+	# a optimization from not running at the optimal frame rate (it will try at least 60 per second)
+	
 	if not is_on_floor():
-		velocity += get_gravity() * delta
-
-	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		#Debug.log("space pressed")
-		velocity.y = JUMP_VELOCITY
+		velocity.y += gravity * delta
+	
+	
+	var move_input = Input.get_axis("move_left", "move_right")
+	velocity.x = move_toward(velocity.x, speed *  move_input, acceleration * delta)
+	
+	if is_on_floor() and Input.is_action_just_pressed("jump"):
+		velocity.y = -jump_speed
+		Debug.log("salte")
 		
-
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction := Input.get_axis("ui_left", "ui_right")
-	if direction:
-		velocity.x = direction * SPEED
-		#Debug.log("<-- pressed")
+	if move_input != 0:
+		pivot.scale.x = sign(move_input)
+		
+	if is_on_floor():
+		if abs(velocity.x) > 10 or move_input:
+			playback.travel("walk")
+		else:
+			playback.travel("idle")
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		#Debug.log("--> pressed")
-	
-	
+		pass
+		#if velocity.y < 0:
+		#	playback.travel("jump")
+		#else:
+		#	playback.travel("fall")
 	
 	move_and_slide()
