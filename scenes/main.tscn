@@ -563,7 +563,7 @@ texture = ExtResource("2_fm3lo")
 [node name="Parallax2D3" type="Parallax2D" parent="Background"]
 scale = Vector2(10, 5.556)
 scroll_scale = Vector2(0.4, 0)
-scroll_offset = Vector2(-32, 10)
+scroll_offset = Vector2(-29, 10)
 repeat_size = Vector2(384, 0)
 metadata/_edit_group_ = true
 

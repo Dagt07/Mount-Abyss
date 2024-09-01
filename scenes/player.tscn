@@ -1,9 +1,10 @@
-[gd_scene load_steps=17 format=3 uid="uid://ywxbv0oq3d73"]
+[gd_scene load_steps=18 format=3 uid="uid://ywxbv0oq3d73"]
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_q45e5"]
 [ext_resource type="Texture2D" uid="uid://8l5yjn1ao4ay" path="res://assets/sonicsheetsonic.png" id="2_m1kwp"]
 [ext_resource type="Script" path="res://components/hitbox.gd" id="3_3ovxl"]
 [ext_resource type="Script" path="res://components/hurtbox.gd" id="4_jncjv"]
+[ext_resource type="PackedScene" uid="uid://dfko0hs7p4md5" path="res://ui/pause_menu.tscn" id="5_7uwek"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_udiwa"]
 height = 40.0
@@ -152,3 +153,5 @@ shape = SubResource("CapsuleShape2D_udiwa")
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
 position = Vector2(0, -200)
+
+[node name="PauseMenu" parent="CharacterBody2D" instance=ExtResource("5_7uwek")]

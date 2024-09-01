@@ -1,0 +1,65 @@
+[gd_scene load_steps=6 format=3 uid="uid://dfko0hs7p4md5"]
+
+[ext_resource type="Theme" uid="uid://bb5n0oh2xtqpm" path="res://resources/theme.tres" id="1_2rf2t"]
+[ext_resource type="Script" path="res://ui/pause_menu.gd" id="2_1p1vi"]
+[ext_resource type="FontFile" uid="uid://cflvow3t5s7tk" path="res://assets/fonts/AVA_Font_1_14/AVA.otf" id="4_lrs3m"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_hmun5"]
+font_size = 36
+
+[sub_resource type="LabelSettings" id="LabelSettings_l8h4k"]
+font = ExtResource("4_lrs3m")
+
+[node name="PauseMenu" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("2_1p1vi")
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.122
+anchor_right = 0.5
+anchor_bottom = 0.122
+offset_left = -24.0
+offset_top = -7.84
+offset_right = 16.0
+offset_bottom = 11.16
+grow_horizontal = 2
+text = "PAUSA"
+label_settings = SubResource("LabelSettings_hmun5")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -320.0
+offset_top = -192.0
+offset_right = 320.0
+offset_bottom = 192.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_2rf2t")
+text = "texto de prueba"
+label_settings = SubResource("LabelSettings_l8h4k")
+horizontal_alignment = 1
+
+[node name="ResumeButton" type="Button" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Resume"
+
+[node name="MenuButton" type="Button" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Menu"
+
+[node name="QuitButton" type="Button" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Quit"
