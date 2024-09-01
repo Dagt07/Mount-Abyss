@@ -15,8 +15,10 @@ extends CharacterBody2D
 @onready var playback = animation_tree.get("parameters/playback")
 
 
+
 func _ready() -> void:
 	hitbox.damage_dealt.connect(_on_damage_dealt)
+	
 
 # func _process(delta: float) -> void:
 	# occurs in every frame of the game, associated with the monitor refresh rate
