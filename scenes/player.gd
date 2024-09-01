@@ -58,7 +58,7 @@ func taunt():
 
 
 func take_damage(damage: int):
-	Debug.log("oh no")
+	Debug.log("oh no i tank %d dmg" % damage)
 
 
 func _on_damage_dealt() -> void:
