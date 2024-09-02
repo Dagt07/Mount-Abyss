@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://ywxbv0oq3d73"]
+[gd_scene load_steps=30 format=3 uid="uid://ywxbv0oq3d73"]
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_q45e5"]
 [ext_resource type="Texture2D" uid="uid://dyvgmqhchjm7d" path="res://assets/char_blue_1.png" id="2_aetxt"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dfko0hs7p4md5" path="res://ui/pause_menu.tscn" id="5_7uwek"]
 [ext_resource type="AudioStream" uid="uid://cqa2nomiumwdg" path="res://assets/sfx/Jump 1.wav" id="6_g36v8"]
 [ext_resource type="AudioStream" uid="uid://dtt0f2woehv0x" path="res://assets/sfx/Balloon Pop 1.wav" id="7_bg8rn"]
+[ext_resource type="AudioStream" uid="uid://bb8nfn71b5wej" path="res://assets/sfx/Hit damage 1.wav" id="8_jjqj6"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_udiwa"]
 height = 40.0
@@ -266,4 +267,8 @@ stream = ExtResource("6_g36v8")
 
 [node name="HitSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_bg8rn")
+volume_db = 6.0
+
+[node name="HurtSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_jjqj6")
 volume_db = 6.0

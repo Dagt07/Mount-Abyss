@@ -15,6 +15,7 @@ extends CharacterBody2D
 @onready var playback = animation_tree.get("parameters/playback")
 @onready var jump_sound: AudioStreamPlayer = $JumpSound
 @onready var hit_sound: AudioStreamPlayer = $HitSound
+@onready var hurt_sound: AudioStreamPlayer = $HurtSound
 
 
 func _ready() -> void:
@@ -61,6 +62,7 @@ func take_damage(damage: int):
 	var timer := Timer.new()
 	Debug.log("PLAYER tank %d dmg" % damage)
 	player_sprite.visible = false
+	hurt_sound.play()
 	await get_tree().create_timer(0.1).timeout
 	player_sprite.visible = true
 

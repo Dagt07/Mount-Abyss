@@ -563,7 +563,7 @@ texture = ExtResource("2_fm3lo")
 [node name="Parallax2D3" type="Parallax2D" parent="Background"]
 scale = Vector2(10, 5.556)
 scroll_scale = Vector2(0.4, 0)
-scroll_offset = Vector2(-212, -91)
+scroll_offset = Vector2(-196, -27)
 repeat_size = Vector2(384, 0)
 metadata/_edit_group_ = true
 
@@ -742,3 +742,23 @@ position = Vector2(629, 514.667)
 [node name="Enemy2" parent="EnemysLevel2" instance=ExtResource("4_yxbx7")]
 position = Vector2(146.333, 389.333)
 scale = Vector2(0.5, 0.5)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 1704.0
+offset_top = 584.0
+offset_right = 2094.0
+offset_bottom = 616.0
+theme_override_font_sizes/font_size = 40
+text = "You may wanna go down here"
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 344.0
+offset_top = 480.0
+offset_right = 734.0
+offset_bottom = 617.0
+theme_override_font_sizes/font_size = 40
+text = "MOVEMENT
+UP: W, UpArrow & Space
+LEFT: A & LeftArrow
+RIGHT: D & RightArrow"
+horizontal_alignment = 1
