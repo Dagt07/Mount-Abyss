@@ -60,4 +60,5 @@ func take_damage(damage: int):
 	Debug.log("PLAYER tank %d dmg" % damage)
 
 func _on_damage_dealt() -> void:
+	velocity.y = -jump_speed # Bounce when hit a enemy from the top
 	Debug.log("PLAYER HIT ENEMY")
