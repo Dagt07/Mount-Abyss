@@ -55,13 +55,9 @@ func _physics_process(delta: float) -> void:
 	
 	move_and_slide()
 
-func taunt():
-	Debug.log("· o ·)/")
-
 
 func take_damage(damage: int):
-	Debug.log("oh no i tank %d dmg" % damage)
-
+	Debug.log("PLAYER tank %d dmg" % damage)
 
 func _on_damage_dealt() -> void:
-	Debug.log("We made damage")
+	Debug.log("PLAYER HIT ENEMY")
