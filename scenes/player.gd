@@ -8,13 +8,13 @@ extends CharacterBody2D
 @export var acceleration = 2000
 
 
-@onready var sprite_2d: Sprite2D = $Pivot/Sonicsheetsonic
 @onready var pivot: Node2D = $Pivot
 @onready var hitbox: Hitbox = $Pivot/Hitbox
-@onready var player_sprite: Sprite2D = $Pivot/Sonicsheetsonic
+@onready var player_sprite: Sprite2D = $Pivot/PlayerSprite
 @onready var animation_tree: AnimationTree = $AnimationTree
 @onready var playback = animation_tree.get("parameters/playback")
 @onready var jump_sound: AudioStreamPlayer = $JumpSound
+@onready var hit_sound: AudioStreamPlayer = $HitSound
 
 
 func _ready() -> void:
@@ -49,11 +49,10 @@ func _physics_process(delta: float) -> void:
 		else:
 			playback.travel("idle")
 	else:
-		pass
-		#if velocity.y < 0:
-		#	playback.travel("jump")
-		#else:
-		#	playback.travel("fall")
+		if velocity.y < 0:
+			playback.travel("jump")
+		else:
+			playback.travel("falling")
 	
 	move_and_slide()
 
@@ -67,4 +66,5 @@ func take_damage(damage: int):
 
 func _on_damage_dealt() -> void:
 	velocity.y = -jump_speed # Bounce when hit a enemy from the top
+	hit_sound.play()
 	Debug.log("PLAYER HIT ENEMY")

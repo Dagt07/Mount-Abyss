@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scenes/enemy.gd" id="1_v6b3d"]
 [ext_resource type="Script" path="res://components/hurtbox.gd" id="2_bafe7"]
 [ext_resource type="Script" path="res://components/hitbox.gd" id="4_aj6gv"]
-[ext_resource type="AudioStream" uid="uid://dtt0f2woehv0x" path="res://assets/sfx/Balloon Pop 1.wav" id="5_o3mqm"]
+[ext_resource type="AudioStream" uid="uid://bb8nfn71b5wej" path="res://assets/sfx/Hit damage 1.wav" id="5_xjidb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fwkhx"]
 size = Vector2(64, 64)
@@ -13,7 +13,7 @@ size = Vector2(64, 64)
 size = Vector2(80, 56)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jlgh6"]
-size = Vector2(80, 19)
+size = Vector2(64, 19)
 
 [node name="Enemy" type="CharacterBody2D"]
 collision_layer = 4
@@ -47,6 +47,6 @@ script = ExtResource("2_bafe7")
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_jlgh6")
 
-[node name="HurtSound" type="AudioStreamPlayer" parent="Hurtbox"]
-stream = ExtResource("5_o3mqm")
+[node name="PopSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_xjidb")
 volume_db = 6.0

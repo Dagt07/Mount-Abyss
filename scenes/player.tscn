@@ -1,89 +1,182 @@
-[gd_scene load_steps=19 format=3 uid="uid://ywxbv0oq3d73"]
+[gd_scene load_steps=29 format=3 uid="uid://ywxbv0oq3d73"]
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_q45e5"]
-[ext_resource type="Texture2D" uid="uid://8l5yjn1ao4ay" path="res://assets/sonicsheetsonic.png" id="2_m1kwp"]
+[ext_resource type="Texture2D" uid="uid://dyvgmqhchjm7d" path="res://assets/char_blue_1.png" id="2_aetxt"]
 [ext_resource type="Script" path="res://components/hitbox.gd" id="3_3ovxl"]
 [ext_resource type="Script" path="res://components/hurtbox.gd" id="4_jncjv"]
 [ext_resource type="PackedScene" uid="uid://dfko0hs7p4md5" path="res://ui/pause_menu.tscn" id="5_7uwek"]
 [ext_resource type="AudioStream" uid="uid://cqa2nomiumwdg" path="res://assets/sfx/Jump 1.wav" id="6_g36v8"]
+[ext_resource type="AudioStream" uid="uid://dtt0f2woehv0x" path="res://assets/sfx/Balloon Pop 1.wav" id="7_bg8rn"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_udiwa"]
 height = 40.0
 
 [sub_resource type="Animation" id="Animation_o6ag5"]
 length = 0.001
+step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
-tracks/0/enabled = false
-tracks/0/path = NodePath("Pivot/Sonicsheetsonic:frame_coords")
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot/PlayerSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [Vector2i(0, 0)]
+"values": [0]
 }
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = false
-tracks/1/path = NodePath("Pivot/Sonicsheetsonic:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+
+[sub_resource type="Animation" id="Animation_7fnfe"]
+resource_name = "falling"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot/PlayerSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [5]
+"values": [33, 34, 35, 36]
 }
 
 [sub_resource type="Animation" id="Animation_i1ers"]
 resource_name = "idle"
-loop_mode = 1
-step = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Pivot/Sonicsheetsonic:frame_coords")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 1,
-"values": [Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, 0), Vector2i(3, 0), Vector2i(4, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_nfygx"]
-resource_name = "walk"
-length = 0.7
+length = 0.6
 loop_mode = 1
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Pivot/Sonicsheetsonic:frame")
+tracks/0/path = NodePath("Pivot/PlayerSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [6, 11, 12, 13, 14, 15, 16]
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="Animation" id="Animation_86uod"]
+resource_name = "jump"
+length = 0.4
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot/PlayerSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [26, 27, 28, 29]
+}
+
+[sub_resource type="Animation" id="Animation_6xv2o"]
+resource_name = "jump_preparation"
+length = 0.2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot/PlayerSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [24, 25]
+}
+
+[sub_resource type="Animation" id="Animation_radut"]
+resource_name = "jump_reload"
+length = 0.3
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot/PlayerSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [30, 31, 32]
+}
+
+[sub_resource type="Animation" id="Animation_3pekh"]
+resource_name = "landing"
+length = 0.3
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot/PlayerSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [37, 38, 39]
+}
+
+[sub_resource type="Animation" id="Animation_nfygx"]
+resource_name = "walk"
+length = 0.8
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot/PlayerSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [16, 17, 18, 19, 20, 21, 22, 23]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_67db0"]
 _data = {
 "RESET": SubResource("Animation_o6ag5"),
+"falling": SubResource("Animation_7fnfe"),
 "idle": SubResource("Animation_i1ers"),
+"jump": SubResource("Animation_86uod"),
+"jump_preparation": SubResource("Animation_6xv2o"),
+"jump_reload": SubResource("Animation_radut"),
+"landing": SubResource("Animation_3pekh"),
 "walk": SubResource("Animation_nfygx")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kty4a"]
 size = Vector2(68, 21)
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_563q1"]
+animation = &"falling"
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vyngu"]
 animation = &"idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_af87p"]
+animation = &"jump"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_idqkt"]
+animation = &"jump_preparation"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_smss4"]
+animation = &"jump_reload"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jh8fa"]
 animation = &"walk"
@@ -97,11 +190,20 @@ advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_ku4t6"]
 states/End/position = Vector2(734, 100)
+states/falling/node = SubResource("AnimationNodeAnimation_563q1")
+states/falling/position = Vector2(661, -49)
 states/idle/node = SubResource("AnimationNodeAnimation_vyngu")
 states/idle/position = Vector2(357, 100)
+states/jump/node = SubResource("AnimationNodeAnimation_af87p")
+states/jump/position = Vector2(405, -49)
+states/jump_preparation/node = SubResource("AnimationNodeAnimation_idqkt")
+states/jump_preparation/position = Vector2(275, 12)
+states/jump_reload/node = SubResource("AnimationNodeAnimation_smss4")
+states/jump_reload/position = Vector2(533, -96)
 states/walk/node = SubResource("AnimationNodeAnimation_jh8fa")
-states/walk/position = Vector2(493, 100)
+states/walk/position = Vector2(574, 100)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_46pb6"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_n7ayh"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_ey84n")]
+graph_offset = Vector2(-183, -106)
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
@@ -109,6 +211,7 @@ collision_mask = 5
 script = ExtResource("1_q45e5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 scale = Vector2(2, 2)
 shape = SubResource("CapsuleShape2D_udiwa")
 
@@ -119,15 +222,16 @@ libraries = {
 
 [node name="Pivot" type="Node2D" parent="."]
 
-[node name="Sonicsheetsonic" type="Sprite2D" parent="Pivot"]
-scale = Vector2(2, 2)
-texture = ExtResource("2_m1kwp")
-hframes = 7
-vframes = 7
-frame = 5
+[node name="PlayerSprite" type="Sprite2D" parent="Pivot"]
+position = Vector2(0, -24)
+scale = Vector2(2.3, 2.3)
+texture = ExtResource("2_aetxt")
+hframes = 8
+vframes = 11
 
 [node name="Hitbox" type="Area2D" parent="Pivot"]
-position = Vector2(4, 55)
+position = Vector2(-4, 46)
+scale = Vector2(0.6, 0.3)
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("3_3ovxl")
@@ -147,6 +251,7 @@ script = ExtResource("4_jncjv")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+visible = false
 scale = Vector2(2, 2)
 shape = SubResource("CapsuleShape2D_udiwa")
 
@@ -154,6 +259,11 @@ shape = SubResource("CapsuleShape2D_udiwa")
 position = Vector2(0, -200)
 
 [node name="PauseMenu" parent="." instance=ExtResource("5_7uwek")]
+visible = false
 
 [node name="JumpSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_g36v8")
+
+[node name="HitSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_bg8rn")
+volume_db = 6.0

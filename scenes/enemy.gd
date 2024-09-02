@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @onready var hitbox: Hitbox = $Hitbox
-@onready var hurt_sound: AudioStreamPlayer = $Hurtbox/HurtSound
+#@onready var pop_sound: AudioStreamPlayer = $PopSound
 
 func _ready() -> void:
 	hitbox.damage_dealt.connect(_on_damage_dealt)
@@ -9,7 +9,7 @@ func _ready() -> void:
 
 func take_damage(damage: int):
 	Debug.log("ENEMY tank %d dmg" % damage)
-	hurt_sound.play()
+	#pop_sound.play()
 	queue_free()
 
 
