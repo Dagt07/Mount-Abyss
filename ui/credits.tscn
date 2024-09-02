@@ -68,3 +68,8 @@ text = "Glacial Mountains: Parallax Background - @vnitti itch.io"
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Cave Background and Tileset - @Ludenc itch.io"
+
+[node name="Label6" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "8-bit / 16-bit Sound Effects (x25) Pack - @JDWasabi itch.io"

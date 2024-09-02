@@ -1,10 +1,11 @@
-[gd_scene load_steps=18 format=3 uid="uid://ywxbv0oq3d73"]
+[gd_scene load_steps=19 format=3 uid="uid://ywxbv0oq3d73"]
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_q45e5"]
 [ext_resource type="Texture2D" uid="uid://8l5yjn1ao4ay" path="res://assets/sonicsheetsonic.png" id="2_m1kwp"]
 [ext_resource type="Script" path="res://components/hitbox.gd" id="3_3ovxl"]
 [ext_resource type="Script" path="res://components/hurtbox.gd" id="4_jncjv"]
 [ext_resource type="PackedScene" uid="uid://dfko0hs7p4md5" path="res://ui/pause_menu.tscn" id="5_7uwek"]
+[ext_resource type="AudioStream" uid="uid://cqa2nomiumwdg" path="res://assets/sfx/Jump 1.wav" id="6_g36v8"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_udiwa"]
 height = 40.0
@@ -153,3 +154,6 @@ shape = SubResource("CapsuleShape2D_udiwa")
 position = Vector2(0, -200)
 
 [node name="PauseMenu" parent="." instance=ExtResource("5_7uwek")]
+
+[node name="JumpSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_g36v8")

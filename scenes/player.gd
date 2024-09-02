@@ -14,8 +14,7 @@ extends CharacterBody2D
 @onready var player_sprite: Sprite2D = $Pivot/Sonicsheetsonic
 @onready var animation_tree: AnimationTree = $AnimationTree
 @onready var playback = animation_tree.get("parameters/playback")
-
-
+@onready var jump_sound: AudioStreamPlayer = $JumpSound
 
 
 func _ready() -> void:
@@ -39,6 +38,7 @@ func _physics_process(delta: float) -> void:
 	if is_on_floor() and Input.is_action_just_pressed("jump"):
 		velocity.y = -jump_speed
 		Debug.log("salte")
+		jump_sound.play()
 		
 	if move_input != 0:
 		pivot.scale.x = sign(move_input)

@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://qso5b00h6lhp"]
+[gd_scene load_steps=9 format=3 uid="uid://qso5b00h6lhp"]
 
 [ext_resource type="Texture2D" uid="uid://s4j0nhm2xhf0" path="res://icon.svg" id="1_h8ety"]
 [ext_resource type="Script" path="res://scenes/enemy.gd" id="1_v6b3d"]
 [ext_resource type="Script" path="res://components/hurtbox.gd" id="2_bafe7"]
 [ext_resource type="Script" path="res://components/hitbox.gd" id="4_aj6gv"]
+[ext_resource type="AudioStream" uid="uid://dtt0f2woehv0x" path="res://assets/sfx/Balloon Pop 1.wav" id="5_o3mqm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fwkhx"]
 size = Vector2(64, 64)
@@ -45,3 +46,7 @@ script = ExtResource("2_bafe7")
 [node name="HurtboxCollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_jlgh6")
+
+[node name="HurtSound" type="AudioStreamPlayer" parent="Hurtbox"]
+stream = ExtResource("5_o3mqm")
+volume_db = 6.0
