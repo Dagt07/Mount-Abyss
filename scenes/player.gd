@@ -11,8 +11,10 @@ extends CharacterBody2D
 @onready var sprite_2d: Sprite2D = $Pivot/Sonicsheetsonic
 @onready var pivot: Node2D = $Pivot
 @onready var hitbox: Hitbox = $Pivot/Hitbox
+@onready var player_sprite: Sprite2D = $Pivot/Sonicsheetsonic
 @onready var animation_tree: AnimationTree = $AnimationTree
 @onready var playback = animation_tree.get("parameters/playback")
+
 
 
 
@@ -57,7 +59,11 @@ func _physics_process(delta: float) -> void:
 
 
 func take_damage(damage: int):
+	var timer := Timer.new()
 	Debug.log("PLAYER tank %d dmg" % damage)
+	player_sprite.visible = false
+	await get_tree().create_timer(0.1).timeout
+	player_sprite.visible = true
 
 func _on_damage_dealt() -> void:
 	velocity.y = -jump_speed # Bounce when hit a enemy from the top

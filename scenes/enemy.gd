@@ -8,6 +8,7 @@ func _ready() -> void:
 
 func take_damage(damage: int):
 	Debug.log("ENEMY tank %d dmg" % damage)
+	queue_free()
 
 
 func _on_damage_dealt() -> void:
