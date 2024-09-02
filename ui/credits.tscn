@@ -1,0 +1,70 @@
+[gd_scene load_steps=2 format=3 uid="uid://cgxbieucw6oj8"]
+
+[ext_resource type="Script" path="res://ui/credits.gd" id="1_uuryf"]
+
+[node name="Credits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_uuryf")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 160.0
+offset_top = 184.0
+offset_right = 216.0
+offset_bottom = 203.0
+text = "CREDITS
+"
+
+[node name="BackToMenu" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 128.0
+offset_top = 232.0
+offset_right = 242.0
+offset_bottom = 259.0
+text = "Back to menu"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -232.0
+offset_top = -71.0
+offset_right = 232.0
+offset_bottom = 71.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Game by David Garcia - @Dagt07 Github"
+
+[node name="Label2" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Assets Used
+"
+
+[node name="Label3" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Starter Tiles - Platformer - @SciGho itch.io"
+
+[node name="Label4" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Glacial Mountains: Parallax Background - @vnitti itch.io"
+
+[node name="Label5" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Cave Background and Tileset - @Ludenc itch.io"

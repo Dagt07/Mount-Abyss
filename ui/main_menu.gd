@@ -6,6 +6,7 @@ extends Control
 @onready var quit_button: Button = %QuitButton
 
 @export var main = PackedScene
+@export var credits_scene: PackedScene
 # recordar cambiar al final por el main_menu a la derecha en inspector de godot
 
 func _ready() -> void:
@@ -25,5 +26,5 @@ func _on_levels_pressed() -> void:
 	
 	
 func _on_credits_pressed() -> void:
-	pass
+	get_tree().change_scene_to_packed(credits_scene)
 	
