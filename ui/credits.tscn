@@ -13,10 +13,11 @@ script = ExtResource("1_uuryf")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_left = 160.0
-offset_top = 184.0
-offset_right = 216.0
-offset_bottom = 203.0
+offset_left = 112.0
+offset_top = 168.0
+offset_right = 270.0
+offset_bottom = 216.0
+theme_override_font_sizes/font_size = 62
 text = "CREDITS
 "
 
@@ -25,8 +26,8 @@ unique_name_in_owner = true
 layout_mode = 0
 offset_left = 128.0
 offset_top = 232.0
-offset_right = 242.0
-offset_bottom = 259.0
+offset_right = 257.0
+offset_bottom = 263.0
 text = "Back to menu"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
@@ -46,12 +47,21 @@ grow_vertical = 2
 [node name="Label" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-text = "Game by David Garcia - @Dagt07 Github"
+text = "Game by David Garcia - @Dagt07 Github
+"
 
 [node name="Label2" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-text = "Assets Used
+text = "
+Assets Used
+
+"
+
+[node name="Label7" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Generic Character Asset v 0.2 - @brullov itch.io
 "
 
 [node name="Label3" type="Label" parent="VBoxContainer"]
@@ -69,7 +79,28 @@ layout_mode = 2
 size_flags_horizontal = 4
 text = "Cave Background and Tileset - @Ludenc itch.io"
 
+[node name="Label8" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "
+SFX
+
+"
+
 [node name="Label6" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "8-bit / 16-bit Sound Effects (x25) Pack - @JDWasabi itch.io"
+
+[node name="Label10" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "
+FONTS
+
+"
+
+[node name="Label11" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "m5x7 - @Daniel Linssen itch.io"

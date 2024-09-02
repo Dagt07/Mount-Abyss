@@ -1,8 +1,8 @@
 [gd_resource type="Theme" load_steps=2 format=3 uid="uid://bb5n0oh2xtqpm"]
 
-[ext_resource type="FontFile" uid="uid://cflvow3t5s7tk" path="res://assets/fonts/AVA_Font_1_14/AVA.otf" id="1_ajuk1"]
+[ext_resource type="FontFile" uid="uid://cepmdoqxpnlax" path="res://assets/fonts/m5x7.ttf" id="1_2rrov"]
 
 [resource]
-default_font = ExtResource("1_ajuk1")
-default_font_size = 16
-Label/fonts/font = ExtResource("1_ajuk1")
+default_font = ExtResource("1_2rrov")
+default_font_size = 28
+Label/fonts/font = ExtResource("1_2rrov")
