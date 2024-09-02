@@ -1,0 +1,97 @@
+[gd_scene load_steps=7 format=3 uid="uid://6u67hogfbprn"]
+
+[ext_resource type="Script" path="res://credits.gd" id="1_x1imh"]
+[ext_resource type="PackedScene" uid="uid://d2x2im8frfjfw" path="res://ui/main_menu.tscn" id="2_80ewx"]
+[ext_resource type="Theme" uid="uid://bb5n0oh2xtqpm" path="res://resources/theme.tres" id="2_wapx5"]
+[ext_resource type="FontFile" uid="uid://cflvow3t5s7tk" path="res://assets/fonts/AVA_Font_1_14/AVA.otf" id="3_xmk62"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_xj8p1"]
+font_size = 36
+
+[sub_resource type="LabelSettings" id="LabelSettings_cq1ee"]
+font = ExtResource("3_xmk62")
+
+[node name="Credits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_x1imh")
+menu_scene = ExtResource("2_80ewx")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.122
+anchor_right = 0.5
+anchor_bottom = 0.122
+offset_left = -528.0
+offset_top = 8.16
+offset_right = -403.0
+offset_bottom = 50.16
+grow_horizontal = 2
+text = "Credits"
+label_settings = SubResource("LabelSettings_xj8p1")
+metadata/_edit_group_ = true
+
+[node name="BackToMenu" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+offset_left = 48.0
+offset_top = 168.0
+offset_right = 312.0
+offset_bottom = 195.0
+text = "Back to Menu"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -320.0
+offset_top = -192.0
+offset_right = 320.0
+offset_bottom = 192.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_wapx5")
+text = "Game by David Garcia
+Github @Dagt07"
+label_settings = SubResource("LabelSettings_cq1ee")
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_wapx5")
+text = "ASSETS"
+label_settings = SubResource("LabelSettings_cq1ee")
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_wapx5")
+text = "Starter Tiles - Platformer - @SchiGo itch.io"
+label_settings = SubResource("LabelSettings_cq1ee")
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_wapx5")
+text = "Cave Background and Tileset - @Ludenc itch.io"
+label_settings = SubResource("LabelSettings_cq1ee")
+horizontal_alignment = 1
+
+[node name="Label5" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_wapx5")
+text = "Glacial Mountains: Parallax Background - @vnitti itch.io"
+label_settings = SubResource("LabelSettings_cq1ee")
+horizontal_alignment = 1

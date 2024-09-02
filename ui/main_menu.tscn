@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://d2x2im8frfjfw"]
+[gd_scene load_steps=8 format=3 uid="uid://d2x2im8frfjfw"]
 
 [ext_resource type="Theme" uid="uid://bb5n0oh2xtqpm" path="res://resources/theme.tres" id="1_r7w6d"]
 [ext_resource type="FontFile" uid="uid://cflvow3t5s7tk" path="res://assets/fonts/AVA_Font_1_14/AVA.otf" id="2_c632p"]
 [ext_resource type="Script" path="res://ui/main_menu.gd" id="2_pdynf"]
 [ext_resource type="PackedScene" uid="uid://b3esvp4m7hfi7" path="res://scenes/main.tscn" id="3_3688t"]
+[ext_resource type="PackedScene" uid="uid://6u67hogfbprn" path="res://ui/credits.tscn" id="4_vmn4l"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_hmun5"]
 font_size = 36
@@ -21,6 +22,7 @@ grow_vertical = 2
 theme = ExtResource("1_r7w6d")
 script = ExtResource("2_pdynf")
 main = ExtResource("3_3688t")
+credits_scene = ExtResource("4_vmn4l")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
