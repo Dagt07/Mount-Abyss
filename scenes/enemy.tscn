@@ -10,26 +10,24 @@ size = Vector2(64, 64)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jlgh6"]
 size = Vector2(76, 20)
 
-[node name="Enemy" type="Node2D"]
-
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+[node name="Enemy" type="CharacterBody2D"]
 collision_layer = 4
 collision_mask = 3
 script = ExtResource("1_v6b3d")
 
-[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(1, 0, 0, 0.980392)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_h8ety")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_fwkhx")
 
-[node name="Hurtbox" type="Area2D" parent="CharacterBody2D"]
+[node name="Hurtbox" type="Area2D" parent="."]
 position = Vector2(0, -33)
 collision_layer = 4
-collision_mask = 2
+collision_mask = 4
 script = ExtResource("2_bafe7")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Hurtbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 shape = SubResource("RectangleShape2D_jlgh6")

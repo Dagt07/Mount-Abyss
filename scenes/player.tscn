@@ -102,56 +102,54 @@ states/walk/node = SubResource("AnimationNodeAnimation_jh8fa")
 states/walk/position = Vector2(493, 100)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_46pb6"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_n7ayh"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_ey84n")]
 
-[node name="Player" type="Node2D"]
-
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+[node name="Player" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_q45e5")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(2, 2)
 shape = SubResource("CapsuleShape2D_udiwa")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="CharacterBody2D"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_67db0")
 }
 
-[node name="Pivot" type="Node2D" parent="CharacterBody2D"]
+[node name="Pivot" type="Node2D" parent="."]
 
-[node name="Sonicsheetsonic" type="Sprite2D" parent="CharacterBody2D/Pivot"]
+[node name="Sonicsheetsonic" type="Sprite2D" parent="Pivot"]
 scale = Vector2(2, 2)
 texture = ExtResource("2_m1kwp")
 hframes = 7
 vframes = 7
 frame = 5
 
-[node name="Hitbox" type="Area2D" parent="CharacterBody2D/Pivot"]
+[node name="Hitbox" type="Area2D" parent="Pivot"]
 position = Vector2(4, 55)
-collision_layer = 2
+collision_layer = 4
 collision_mask = 4
 script = ExtResource("3_3ovxl")
 metadata/_edit_group_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Pivot/Hitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pivot/Hitbox"]
 shape = SubResource("RectangleShape2D_kty4a")
 
-[node name="AnimationTree" type="AnimationTree" parent="CharacterBody2D"]
+[node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_ku4t6")
 anim_player = NodePath("../AnimationPlayer")
 
-[node name="Hurtbox" type="Area2D" parent="CharacterBody2D"]
+[node name="Hurtbox" type="Area2D" parent="."]
 collision_layer = 2
-collision_mask = 6
+collision_mask = 2
 script = ExtResource("4_jncjv")
 metadata/_edit_group_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Hurtbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 scale = Vector2(2, 2)
 shape = SubResource("CapsuleShape2D_udiwa")
 
-[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+[node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, -200)
 
-[node name="PauseMenu" parent="CharacterBody2D" instance=ExtResource("5_7uwek")]
+[node name="PauseMenu" parent="." instance=ExtResource("5_7uwek")]
